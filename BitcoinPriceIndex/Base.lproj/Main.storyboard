@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uQQ-MR-PSa">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--BitcoinVC-->
+        <scene sceneID="JGu-op-s6K">
+            <objects>
+                <viewController id="uQQ-MR-PSa" customClass="BitcoinVC" customModule="BitcoinPriceIndex" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="p5E-vB-xec">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lightGreyBackground" translatesAutoresizingMaskIntoConstraints="NO" id="QgU-4F-r4c">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bitcoinSivi" translatesAutoresizingMaskIntoConstraints="NO" id="SVU-4v-rsq">
+                                <rect key="frame" x="115.5" y="36" width="144.5" height="144.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="SVU-4v-rsq" secondAttribute="height" multiplier="1:1" id="hun-hp-UsQ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sEN-PO-cTK">
+                                <rect key="frame" x="87.5" y="188.5" width="200" height="50"/>
+                                <color key="backgroundColor" red="0.99519230769230771" green="0.99038461538461542" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="EZY-Sn-84i"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="cpy-U0-a8J"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9LZ-yj-bRf">
+                                <rect key="frame" x="16" y="246.5" width="343" height="33"/>
+                                <color key="backgroundColor" red="0.99519230769230771" green="0.99038461538461542" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="WJR-gX-I2o"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <state key="normal" title="START">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="chartAction:" destination="uQQ-MR-PSa" eventType="touchUpInside" id="MX6-TR-HH8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zx2-gA-lfc" customClass="BorderButton" customModule="BitcoinPriceIndex" customModuleProvider="target">
+                                <rect key="frame" x="16" y="36" width="60" height="30"/>
+                                <color key="backgroundColor" red="0.99519230769230771" green="0.99038461538461542" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="WSi-dO-gm0"/>
+                                    <constraint firstAttribute="width" constant="60" id="fjq-LK-KEc"/>
+                                </constraints>
+                                <state key="normal" title="LIST">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="dropMenuAction:" destination="uQQ-MR-PSa" eventType="touchUpInside" id="8AB-cM-KI5"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="30" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="DhC-eD-fxN">
+                                <rect key="frame" x="16" y="66" width="60" height="120"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="gvK-L8-cwf"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="3Ek-JM-lYW" customClass="CurrencyTVCell" customModule="BitcoinPriceIndex" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="1" width="60" height="30"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3Ek-JM-lYW" id="rGf-O9-RB4">
+                                            <rect key="frame" x="0.0" y="0.0" width="60" height="29.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="uQQ-MR-PSa" id="1Os-th-z0P"/>
+                                    <outlet property="delegate" destination="uQQ-MR-PSa" id="qSU-kL-n3k"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yo7-Tj-NSc" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="16" y="287.5" width="343" height="333.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ePx-wr-PRt" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="16" y="287.5" width="343" height="333.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EyB-th-rc3">
+                                <rect key="frame" x="239" y="629" width="120" height="30"/>
+                                <color key="backgroundColor" red="0.99519230769230771" green="0.99038461538461542" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="9ZC-OO-7hC"/>
+                                    <constraint firstAttribute="height" constant="30" id="TXN-LW-FLL"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3tT-uJ-Ubi" customClass="BorderButton" customModule="BitcoinPriceIndex" customModuleProvider="target">
+                                <rect key="frame" x="299" y="36" width="60" height="30"/>
+                                <color key="backgroundColor" red="0.99519230769230771" green="0.99038461538461542" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="tE9-OD-xMf"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="60" id="vKg-b5-Eaw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="BUY/SELL">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="calculateVCButton:" destination="uQQ-MR-PSa" eventType="touchUpInside" id="3Oj-Dv-JFj"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter reference price here:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Hsw-Xb-gyb" customClass="BorderLabel" customModule="BitcoinPriceIndex">
+                                <rect key="frame" x="16" y="629" width="215" height="30"/>
+                                <color key="backgroundColor" red="0.9951923077" green="0.9903846154" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Zx2-gA-lfc" firstAttribute="top" secondItem="HSg-m0-nbi" secondAttribute="top" constant="16" id="2vL-Vu-0wO"/>
+                            <constraint firstItem="EyB-th-rc3" firstAttribute="top" secondItem="ePx-wr-PRt" secondAttribute="bottom" constant="8" id="4NA-3z-Zas"/>
+                            <constraint firstItem="SVU-4v-rsq" firstAttribute="top" relation="greaterThanOrEqual" secondItem="HSg-m0-nbi" secondAttribute="top" constant="16" id="51X-wd-0XN"/>
+                            <constraint firstItem="QgU-4F-r4c" firstAttribute="bottom" secondItem="HSg-m0-nbi" secondAttribute="bottom" id="5S7-gm-uTz"/>
+                            <constraint firstItem="ePx-wr-PRt" firstAttribute="height" secondItem="p5E-vB-xec" secondAttribute="height" multiplier="0.5" id="5Xe-Xz-eby"/>
+                            <constraint firstItem="Yo7-Tj-NSc" firstAttribute="centerY" secondItem="ePx-wr-PRt" secondAttribute="centerY" id="7be-uK-u05"/>
+                            <constraint firstItem="3tT-uJ-Ubi" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="SVU-4v-rsq" secondAttribute="trailing" priority="999" constant="8" id="8a0-dY-fnd"/>
+                            <constraint firstItem="SVU-4v-rsq" firstAttribute="centerX" secondItem="ePx-wr-PRt" secondAttribute="centerX" id="9wg-Ur-Jq9"/>
+                            <constraint firstItem="DhC-eD-fxN" firstAttribute="top" secondItem="Zx2-gA-lfc" secondAttribute="bottom" id="Aaf-6P-58I"/>
+                            <constraint firstItem="Yo7-Tj-NSc" firstAttribute="width" secondItem="ePx-wr-PRt" secondAttribute="width" id="CB6-Od-Wqc"/>
+                            <constraint firstItem="Zx2-gA-lfc" firstAttribute="leading" secondItem="HSg-m0-nbi" secondAttribute="leading" constant="16" id="CeU-sl-ixK"/>
+                            <constraint firstItem="EyB-th-rc3" firstAttribute="leading" secondItem="Hsw-Xb-gyb" secondAttribute="trailing" constant="8" id="DSW-Pc-eT0"/>
+                            <constraint firstItem="Yo7-Tj-NSc" firstAttribute="height" secondItem="ePx-wr-PRt" secondAttribute="height" id="Ewz-Fa-8oX"/>
+                            <constraint firstItem="QgU-4F-r4c" firstAttribute="trailing" secondItem="HSg-m0-nbi" secondAttribute="trailing" id="FE8-Or-a3c"/>
+                            <constraint firstItem="Yo7-Tj-NSc" firstAttribute="centerX" secondItem="ePx-wr-PRt" secondAttribute="centerX" id="GTI-HL-4wd"/>
+                            <constraint firstItem="HSg-m0-nbi" firstAttribute="trailing" secondItem="3tT-uJ-Ubi" secondAttribute="trailing" constant="16" id="GU0-V7-sLu"/>
+                            <constraint firstItem="3tT-uJ-Ubi" firstAttribute="top" secondItem="HSg-m0-nbi" secondAttribute="top" constant="16" id="IhR-ES-Itd"/>
+                            <constraint firstItem="sEN-PO-cTK" firstAttribute="centerX" secondItem="9LZ-yj-bRf" secondAttribute="centerX" id="L0Z-wf-Pwx"/>
+                            <constraint firstItem="QgU-4F-r4c" firstAttribute="leading" secondItem="HSg-m0-nbi" secondAttribute="leading" id="MUg-AV-eQg"/>
+                            <constraint firstItem="Yo7-Tj-NSc" firstAttribute="top" secondItem="9LZ-yj-bRf" secondAttribute="bottom" constant="8" id="N7w-T7-pMQ"/>
+                            <constraint firstItem="9LZ-yj-bRf" firstAttribute="top" secondItem="sEN-PO-cTK" secondAttribute="bottom" constant="8" id="OdB-9v-JaK"/>
+                            <constraint firstItem="sEN-PO-cTK" firstAttribute="top" relation="greaterThanOrEqual" secondItem="SVU-4v-rsq" secondAttribute="bottom" constant="8" id="T8d-Ns-NCE"/>
+                            <constraint firstItem="QgU-4F-r4c" firstAttribute="top" secondItem="p5E-vB-xec" secondAttribute="top" id="Unh-mP-5T3"/>
+                            <constraint firstItem="DhC-eD-fxN" firstAttribute="leading" secondItem="Zx2-gA-lfc" secondAttribute="leading" id="VWb-wS-pKW"/>
+                            <constraint firstItem="SVU-4v-rsq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Zx2-gA-lfc" secondAttribute="trailing" constant="8" id="WE5-ke-2Cz"/>
+                            <constraint firstItem="DhC-eD-fxN" firstAttribute="width" secondItem="Zx2-gA-lfc" secondAttribute="width" id="Ztx-cz-oa5"/>
+                            <constraint firstItem="HSg-m0-nbi" firstAttribute="trailing" secondItem="9LZ-yj-bRf" secondAttribute="trailing" constant="16" id="dvh-9e-yeo"/>
+                            <constraint firstItem="HSg-m0-nbi" firstAttribute="bottom" secondItem="Hsw-Xb-gyb" secondAttribute="bottom" constant="8" id="ebO-5z-NRx"/>
+                            <constraint firstItem="ePx-wr-PRt" firstAttribute="leading" secondItem="HSg-m0-nbi" secondAttribute="leading" constant="16" id="fDa-ZZ-YcZ"/>
+                            <constraint firstItem="HSg-m0-nbi" firstAttribute="bottom" secondItem="EyB-th-rc3" secondAttribute="bottom" constant="8" id="fFP-XZ-Tvx"/>
+                            <constraint firstItem="HSg-m0-nbi" firstAttribute="trailing" secondItem="ePx-wr-PRt" secondAttribute="trailing" constant="16" id="fni-GR-sYq"/>
+                            <constraint firstItem="Hsw-Xb-gyb" firstAttribute="leading" secondItem="HSg-m0-nbi" secondAttribute="leading" constant="16" id="gAX-pP-3du"/>
+                            <constraint firstItem="HSg-m0-nbi" firstAttribute="bottom" secondItem="ePx-wr-PRt" secondAttribute="bottom" constant="46" id="hsO-xz-KZh"/>
+                            <constraint firstItem="HSg-m0-nbi" firstAttribute="trailing" secondItem="EyB-th-rc3" secondAttribute="trailing" constant="16" id="iik-E2-siB"/>
+                            <constraint firstItem="Hsw-Xb-gyb" firstAttribute="top" secondItem="Yo7-Tj-NSc" secondAttribute="bottom" constant="8" id="ixd-9G-LEJ"/>
+                            <constraint firstItem="9LZ-yj-bRf" firstAttribute="leading" secondItem="HSg-m0-nbi" secondAttribute="leading" constant="16" id="qQR-6e-F4W"/>
+                            <constraint firstItem="9LZ-yj-bRf" firstAttribute="width" secondItem="ePx-wr-PRt" secondAttribute="width" id="zer-VL-D0Q"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="HSg-m0-nbi"/>
+                    </view>
+                    <connections>
+                        <outlet property="barChartView" destination="Yo7-Tj-NSc" id="Msz-xH-9Qp"/>
+                        <outlet property="bitcoinImage" destination="SVU-4v-rsq" id="Xnr-Nm-rje"/>
+                        <outlet property="bitcoinPriceLabel" destination="sEN-PO-cTK" id="4cx-dF-arR"/>
+                        <outlet property="calculateButtonOutlet" destination="3tT-uJ-Ubi" id="xEe-wE-F7z"/>
+                        <outlet property="chartButton" destination="9LZ-yj-bRf" id="OZa-SV-yg1"/>
+                        <outlet property="dropButtonOutlet" destination="Zx2-gA-lfc" id="D5U-ac-8Ft"/>
+                        <outlet property="lineChartView" destination="ePx-wr-PRt" id="4ME-pC-aNi"/>
+                        <outlet property="referencePriceTextField" destination="EyB-th-rc3" id="QWz-ib-Oss"/>
+                        <outlet property="tableView" destination="DhC-eD-fxN" id="e64-l4-vKe"/>
+                        <segue destination="AhS-V1-puZ" kind="presentation" identifier="Segue" id="8yL-Qf-7yI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LLW-vG-cI4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1090.4000000000001" y="113.79310344827587"/>
+        </scene>
+        <!--CalculateVC-->
+        <scene sceneID="s6z-62-R45">
+            <objects>
+                <viewController id="AhS-V1-puZ" customClass="CalculateVC" customModule="BitcoinPriceIndex" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vkR-1q-7PE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lightGreyBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Uc9-dM-YHQ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30,000.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zsx-kh-zzP" customClass="BorderLabel" customModule="BitcoinPriceIndex" customModuleProvider="target">
+                                <rect key="frame" x="202" y="138" width="129" height="30"/>
+                                <color key="backgroundColor" red="0.9951923077" green="0.9903846154" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number Of Bitcoins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GHe-ot-Y0C" customClass="BorderLabel" customModule="BitcoinPriceIndex" customModuleProvider="target">
+                                <rect key="frame" x="16" y="100" width="178" height="30"/>
+                                <color key="backgroundColor" red="0.9951923077" green="0.9903846154" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Bb1-E9-1at"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Value" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hj3-wx-cIC" customClass="BorderLabel" customModule="BitcoinPriceIndex" customModuleProvider="target">
+                                <rect key="frame" x="16" y="138" width="178" height="30"/>
+                                <color key="backgroundColor" red="0.9951923077" green="0.9903846154" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="zzd-wc-y0A"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="kcy-eN-2HR">
+                                <rect key="frame" x="79" y="237" width="216" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5c-m6-bfM" customClass="BorderButton" customModule="BitcoinPriceIndex" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Hel-qf-xFg"/>
+                                            <constraint firstAttribute="width" constant="100" id="ZtP-mI-ryU"/>
+                                        </constraints>
+                                        <state key="normal" title="BUY">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="buyButton:" destination="AhS-V1-puZ" eventType="touchUpInside" id="oHy-Ha-doZ"/>
+                                            <segue destination="TxW-bl-xz9" kind="presentation" identifier="BuySegue" id="cwQ-Z7-WQ8"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J5Z-26-voy" customClass="BorderButton" customModule="BitcoinPriceIndex" customModuleProvider="target">
+                                        <rect key="frame" x="116" y="0.0" width="100" height="30"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="g0Z-Sl-E6X"/>
+                                            <constraint firstAttribute="width" constant="100" id="nCx-4a-FUR"/>
+                                        </constraints>
+                                        <state key="normal" title="SELL">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sellButton:" destination="AhS-V1-puZ" eventType="touchUpInside" id="AQa-54-9CZ"/>
+                                            <segue destination="TxW-bl-xz9" kind="presentation" identifier="SellSegue" id="6ic-Ho-YdF"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G2b-YI-Lfk" customClass="BorderLabel" customModule="BitcoinPriceIndex" customModuleProvider="target">
+                                <rect key="frame" x="202" y="101" width="129" height="30"/>
+                                <color key="backgroundColor" red="0.9951923077" green="0.9903846154" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="dn1-8o-Kmn"/>
+                                    <constraint firstAttribute="width" constant="129" id="gD8-M4-50Z"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1,000,000.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EhK-8J-LKE" customClass="BorderLabel" customModule="BitcoinPriceIndex" customModuleProvider="target">
+                                <rect key="frame" x="202" y="177" width="129" height="30"/>
+                                <color key="backgroundColor" red="0.9951923077" green="0.9903846154" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="q5Y-K8-kBz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Money Made" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z2p-Lo-1ow" customClass="BorderLabel" customModule="BitcoinPriceIndex" customModuleProvider="target">
+                                <rect key="frame" x="16" y="176" width="178" height="30"/>
+                                <color key="backgroundColor" red="0.9951923077" green="0.9903846154" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="r66-8K-phy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hLL-fD-MnD">
+                                <rect key="frame" x="0.0" y="275" width="375" height="352"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="2Wd-D1-n4Z" customClass="EntryTVCell" customModule="BitcoinPriceIndex" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2Wd-D1-n4Z" id="Kh4-0w-Ek7">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="AhS-V1-puZ" id="So8-nM-nG6"/>
+                                    <outlet property="delegate" destination="AhS-V1-puZ" id="5Sd-pN-sB2"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FFe-AF-Jtm" customClass="BorderButton" customModule="BitcoinPriceIndex" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="627" width="375" height="40"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" title="REMOVE LAST ENTRY">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="removeLastEntryButton:" destination="AhS-V1-puZ" eventType="touchUpInside" id="es3-eR-pZb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Sp-Ai-uNC" customClass="BorderButton" customModule="BitcoinPriceIndex" customModuleProvider="target">
+                                <rect key="frame" x="299" y="36" width="60" height="30"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="Var-3W-gjj"/>
+                                    <constraint firstAttribute="height" constant="30" id="j0G-kU-7AC"/>
+                                </constraints>
+                                <state key="normal" title="CANCEL">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButton:" destination="AhS-V1-puZ" eventType="touchUpInside" id="H4q-Np-476"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency - USD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L2a-hY-thi" customClass="BorderLabel" customModule="BitcoinPriceIndex" customModuleProvider="target">
+                                <rect key="frame" x="98" y="36" width="178" height="30"/>
+                                <color key="backgroundColor" red="0.9951923077" green="0.9903846154" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Zsx-kh-zzP" firstAttribute="top" secondItem="G2b-YI-Lfk" secondAttribute="bottom" constant="7" id="3a4-Su-8JU"/>
+                            <constraint firstItem="G2b-YI-Lfk" firstAttribute="leading" secondItem="Zsx-kh-zzP" secondAttribute="leading" id="49O-yS-3HK"/>
+                            <constraint firstItem="Zsx-kh-zzP" firstAttribute="trailing" secondItem="EhK-8J-LKE" secondAttribute="trailing" id="4RU-He-Jvf"/>
+                            <constraint firstItem="L2a-hY-thi" firstAttribute="centerX" secondItem="Uc9-dM-YHQ" secondAttribute="centerX" id="4Wu-d4-rdV"/>
+                            <constraint firstItem="Uc9-dM-YHQ" firstAttribute="leading" secondItem="vfX-LD-anY" secondAttribute="leading" id="54E-hD-WtP"/>
+                            <constraint firstItem="vfX-LD-anY" firstAttribute="trailing" secondItem="G2b-YI-Lfk" secondAttribute="trailing" constant="44" id="5ZX-DA-MLM"/>
+                            <constraint firstItem="G2b-YI-Lfk" firstAttribute="trailing" secondItem="Zsx-kh-zzP" secondAttribute="trailing" id="A1P-IW-swh"/>
+                            <constraint firstItem="vfX-LD-anY" firstAttribute="trailing" secondItem="Uc9-dM-YHQ" secondAttribute="trailing" id="BKO-gy-noz"/>
+                            <constraint firstItem="Uc9-dM-YHQ" firstAttribute="top" secondItem="vkR-1q-7PE" secondAttribute="top" id="Cz2-5z-Bvi"/>
+                            <constraint firstItem="hj3-wx-cIC" firstAttribute="top" secondItem="GHe-ot-Y0C" secondAttribute="bottom" constant="8" symbolic="YES" id="Jh1-Ay-37O"/>
+                            <constraint firstItem="GHe-ot-Y0C" firstAttribute="top" secondItem="vfX-LD-anY" secondAttribute="top" constant="80" id="MOI-xm-cll"/>
+                            <constraint firstItem="hLL-fD-MnD" firstAttribute="top" secondItem="kcy-eN-2HR" secondAttribute="bottom" constant="8" id="NKS-KY-Cji"/>
+                            <constraint firstItem="z2p-Lo-1ow" firstAttribute="top" secondItem="hj3-wx-cIC" secondAttribute="bottom" constant="8" symbolic="YES" id="QS0-Pd-vbv"/>
+                            <constraint firstItem="hj3-wx-cIC" firstAttribute="leading" secondItem="z2p-Lo-1ow" secondAttribute="leading" id="R0c-ex-6TA"/>
+                            <constraint firstItem="GHe-ot-Y0C" firstAttribute="leading" secondItem="vkR-1q-7PE" secondAttribute="leadingMargin" id="Sfd-xO-1ci"/>
+                            <constraint firstItem="G2b-YI-Lfk" firstAttribute="leading" secondItem="GHe-ot-Y0C" secondAttribute="trailing" constant="8" symbolic="YES" id="Trp-aa-hHf"/>
+                            <constraint firstItem="L2a-hY-thi" firstAttribute="top" secondItem="vfX-LD-anY" secondAttribute="top" constant="16" id="Vk7-nP-DAb"/>
+                            <constraint firstItem="hj3-wx-cIC" firstAttribute="firstBaseline" secondItem="Zsx-kh-zzP" secondAttribute="firstBaseline" id="Vu7-Jz-Mxd"/>
+                            <constraint firstItem="L2a-hY-thi" firstAttribute="width" secondItem="GHe-ot-Y0C" secondAttribute="width" id="YGo-NK-FhA"/>
+                            <constraint firstItem="FFe-AF-Jtm" firstAttribute="top" secondItem="hLL-fD-MnD" secondAttribute="bottom" id="Ytc-3e-iza"/>
+                            <constraint firstItem="Zsx-kh-zzP" firstAttribute="leading" secondItem="hj3-wx-cIC" secondAttribute="trailing" constant="8" symbolic="YES" id="aUH-p1-uZc"/>
+                            <constraint firstItem="FFe-AF-Jtm" firstAttribute="leading" secondItem="vfX-LD-anY" secondAttribute="leading" id="ckH-6w-HWC"/>
+                            <constraint firstItem="Zsx-kh-zzP" firstAttribute="leading" secondItem="EhK-8J-LKE" secondAttribute="leading" id="dA2-85-wTd"/>
+                            <constraint firstItem="hLL-fD-MnD" firstAttribute="bottom" secondItem="vfX-LD-anY" secondAttribute="bottom" constant="-40" id="dUW-Lf-lZ9"/>
+                            <constraint firstItem="L2a-hY-thi" firstAttribute="height" secondItem="GHe-ot-Y0C" secondAttribute="height" id="dgv-Y6-EuQ"/>
+                            <constraint firstItem="kcy-eN-2HR" firstAttribute="centerX" secondItem="Uc9-dM-YHQ" secondAttribute="centerX" id="fmy-N0-6XX"/>
+                            <constraint firstItem="8Sp-Ai-uNC" firstAttribute="top" secondItem="vfX-LD-anY" secondAttribute="top" constant="16" id="fvh-lj-9OB"/>
+                            <constraint firstItem="vfX-LD-anY" firstAttribute="trailing" secondItem="8Sp-Ai-uNC" secondAttribute="trailing" constant="16" id="lDg-am-ZvR"/>
+                            <constraint firstItem="vfX-LD-anY" firstAttribute="trailing" secondItem="hLL-fD-MnD" secondAttribute="trailing" id="m1c-bW-HHy"/>
+                            <constraint firstItem="kcy-eN-2HR" firstAttribute="top" secondItem="EhK-8J-LKE" secondAttribute="bottom" constant="30" id="m4K-Jy-mn6"/>
+                            <constraint firstItem="EhK-8J-LKE" firstAttribute="top" secondItem="Zsx-kh-zzP" secondAttribute="bottom" constant="9" id="miP-Ja-Q5A"/>
+                            <constraint firstItem="hj3-wx-cIC" firstAttribute="baseline" secondItem="Zsx-kh-zzP" secondAttribute="baseline" id="nE7-gJ-FxN"/>
+                            <constraint firstItem="hLL-fD-MnD" firstAttribute="leading" secondItem="vfX-LD-anY" secondAttribute="leading" id="oWL-O0-YPO"/>
+                            <constraint firstItem="GHe-ot-Y0C" firstAttribute="leading" secondItem="hj3-wx-cIC" secondAttribute="leading" id="ow4-az-ktY"/>
+                            <constraint firstItem="EhK-8J-LKE" firstAttribute="leading" secondItem="z2p-Lo-1ow" secondAttribute="trailing" constant="8" symbolic="YES" id="syu-bH-KM6"/>
+                            <constraint firstItem="vfX-LD-anY" firstAttribute="trailing" secondItem="FFe-AF-Jtm" secondAttribute="trailing" id="tBg-9N-779"/>
+                            <constraint firstItem="vfX-LD-anY" firstAttribute="bottom" secondItem="Uc9-dM-YHQ" secondAttribute="bottom" id="wiO-bj-eW7"/>
+                            <constraint firstItem="FFe-AF-Jtm" firstAttribute="bottom" secondItem="vfX-LD-anY" secondAttribute="bottom" id="yso-tD-Hms"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vfX-LD-anY"/>
+                    </view>
+                    <connections>
+                        <outlet property="buyButtonOutlet" destination="B5c-m6-bfM" id="asD-Mu-LSu"/>
+                        <outlet property="currencyLabel" destination="L2a-hY-thi" id="cc8-Tc-ehT"/>
+                        <outlet property="currentValueLabel" destination="Zsx-kh-zzP" id="4sv-IK-oQM"/>
+                        <outlet property="moneyMadeLabel" destination="EhK-8J-LKE" id="xmB-BA-Aph"/>
+                        <outlet property="numberOfBitcoinsLabel" destination="G2b-YI-Lfk" id="M6x-iD-zdE"/>
+                        <outlet property="sellButtonOutlet" destination="J5Z-26-voy" id="dDb-DF-qNG"/>
+                        <outlet property="tableView" destination="hLL-fD-MnD" id="WDl-Cx-UGa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0LM-GU-HZb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2201" y="114"/>
+        </scene>
+        <!--Buy SellVC-->
+        <scene sceneID="2I1-L3-Tk6">
+            <objects>
+                <viewController modalPresentationStyle="overCurrentContext" id="TxW-bl-xz9" customClass="BuySellVC" customModule="BitcoinPriceIndex" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MSV-DY-ada">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VbJ-Va-tZI">
+                                <rect key="frame" x="30" y="167" width="315" height="250"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBZ-fr-R9b">
+                                        <rect key="frame" x="0.0" y="0.0" width="315" height="30"/>
+                                        <color key="backgroundColor" red="1" green="0.44773734125902909" blue="0.43244883249059962" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="skm-1T-H7H"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.9951923077" green="0.9903846154" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lsh-N0-CH6" customClass="BorderView" customModule="BitcoinPriceIndex" customModuleProvider="target">
+                                        <rect key="frame" x="72" y="38" width="170" height="70"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter number here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ufq-e4-0ww">
+                                                <rect key="frame" x="0.0" y="35" width="170" height="35"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="35" id="ioa-H8-4Xe"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" enablesReturnKeyAutomatically="YES"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number Of Bitcoins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Cb-lN-a8R">
+                                                <rect key="frame" x="0.0" y="0.0" width="170" height="35"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="ufq-e4-0ww" firstAttribute="top" secondItem="8Cb-lN-a8R" secondAttribute="bottom" id="28J-A0-EIx"/>
+                                            <constraint firstAttribute="bottom" secondItem="ufq-e4-0ww" secondAttribute="bottom" id="4zH-dV-H7C"/>
+                                            <constraint firstAttribute="height" constant="70" id="BXX-tN-vDL"/>
+                                            <constraint firstItem="8Cb-lN-a8R" firstAttribute="leading" secondItem="lsh-N0-CH6" secondAttribute="leading" id="Bha-9P-2C1"/>
+                                            <constraint firstItem="8Cb-lN-a8R" firstAttribute="top" secondItem="lsh-N0-CH6" secondAttribute="top" id="Kwv-5p-3ub"/>
+                                            <constraint firstAttribute="trailing" secondItem="ufq-e4-0ww" secondAttribute="trailing" id="chl-Tg-w7N"/>
+                                            <constraint firstItem="ufq-e4-0ww" firstAttribute="leading" secondItem="lsh-N0-CH6" secondAttribute="leading" id="j8m-Di-8mX"/>
+                                            <constraint firstAttribute="trailing" secondItem="8Cb-lN-a8R" secondAttribute="trailing" id="myO-Zl-tbi"/>
+                                            <constraint firstAttribute="width" constant="170" id="wNG-Of-2ww"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cfn-Xm-I51" customClass="BorderView" customModule="BitcoinPriceIndex" customModuleProvider="target">
+                                        <rect key="frame" x="72" y="116" width="170" height="70"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter price here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FJp-Sg-L49">
+                                                <rect key="frame" x="0.0" y="35" width="170" height="35"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="OKc-yj-VZs"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" enablesReturnKeyAutomatically="YES"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price Per Bitcoin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gRp-wM-fOm">
+                                                <rect key="frame" x="0.0" y="0.0" width="170" height="35"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="35" id="5Nl-ra-CwA"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="gRp-wM-fOm" secondAttribute="trailing" id="BPS-NO-Wac"/>
+                                            <constraint firstItem="FJp-Sg-L49" firstAttribute="top" secondItem="gRp-wM-fOm" secondAttribute="bottom" id="Jdk-n3-mCD"/>
+                                            <constraint firstAttribute="height" constant="70" id="TuN-FB-Un9"/>
+                                            <constraint firstAttribute="trailing" secondItem="FJp-Sg-L49" secondAttribute="trailing" id="c6w-F6-yG6"/>
+                                            <constraint firstAttribute="bottom" secondItem="FJp-Sg-L49" secondAttribute="bottom" id="d4s-Nv-fAN"/>
+                                            <constraint firstItem="FJp-Sg-L49" firstAttribute="leading" secondItem="Cfn-Xm-I51" secondAttribute="leading" id="fmb-O1-cAA"/>
+                                            <constraint firstItem="gRp-wM-fOm" firstAttribute="leading" secondItem="Cfn-Xm-I51" secondAttribute="leading" id="gKs-xe-hXq"/>
+                                            <constraint firstAttribute="width" constant="170" id="geA-KW-XVN"/>
+                                            <constraint firstItem="gRp-wM-fOm" firstAttribute="top" secondItem="Cfn-Xm-I51" secondAttribute="top" id="sfk-Ar-CrH"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdb-HE-AWc" customClass="BorderButton" customModule="BitcoinPriceIndex" customModuleProvider="target">
+                                        <rect key="frame" x="72" y="207" width="170" height="35"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="52h-CR-XTs"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="CONFIRM">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="confirmButton:" destination="TxW-bl-xz9" eventType="touchUpInside" id="8Gu-a7-mig"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="hBZ-fr-R9b" secondAttribute="trailing" id="6OK-ts-ff6"/>
+                                    <constraint firstItem="wdb-HE-AWc" firstAttribute="width" secondItem="FJp-Sg-L49" secondAttribute="width" id="6e1-ay-jcS"/>
+                                    <constraint firstItem="hBZ-fr-R9b" firstAttribute="top" secondItem="VbJ-Va-tZI" secondAttribute="top" id="K45-Kv-RSs"/>
+                                    <constraint firstItem="hBZ-fr-R9b" firstAttribute="leading" secondItem="VbJ-Va-tZI" secondAttribute="leading" id="MAl-G7-9PJ"/>
+                                    <constraint firstAttribute="height" constant="250" id="WdP-y3-X5N"/>
+                                    <constraint firstItem="lsh-N0-CH6" firstAttribute="top" secondItem="hBZ-fr-R9b" secondAttribute="bottom" constant="8" id="cyH-VH-AcK"/>
+                                    <constraint firstItem="Cfn-Xm-I51" firstAttribute="top" secondItem="lsh-N0-CH6" secondAttribute="bottom" constant="8" id="eRr-xH-NyM"/>
+                                    <constraint firstItem="Cfn-Xm-I51" firstAttribute="centerX" secondItem="VbJ-Va-tZI" secondAttribute="centerX" id="i28-Ea-UGP"/>
+                                    <constraint firstItem="lsh-N0-CH6" firstAttribute="centerX" secondItem="VbJ-Va-tZI" secondAttribute="centerX" id="lfm-QA-4jb"/>
+                                    <constraint firstItem="wdb-HE-AWc" firstAttribute="centerX" secondItem="VbJ-Va-tZI" secondAttribute="centerX" id="uRW-c8-mqk"/>
+                                    <constraint firstAttribute="bottom" secondItem="wdb-HE-AWc" secondAttribute="bottom" constant="8" id="wdb-mR-rX8"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a4u-TE-9ZN" customClass="BorderButton" customModule="BitcoinPriceIndex" customModuleProvider="target">
+                                <rect key="frame" x="102.5" y="457" width="170" height="35"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" title="CANCEL">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButton:" destination="TxW-bl-xz9" eventType="touchUpInside" id="JCq-BH-Qri"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.7619566941624365" green="0.7619566941624365" blue="0.7619566941624365" alpha="0.85033176369863017" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="a4u-TE-9ZN" firstAttribute="top" secondItem="VbJ-Va-tZI" secondAttribute="bottom" constant="40" id="Bx4-6M-bTz"/>
+                            <constraint firstItem="VbJ-Va-tZI" firstAttribute="centerY" secondItem="PxP-QT-lYb" secondAttribute="centerY" multiplier="0.85" id="Enh-MM-BeU"/>
+                            <constraint firstItem="a4u-TE-9ZN" firstAttribute="width" secondItem="wdb-HE-AWc" secondAttribute="width" id="GGH-O9-Qky"/>
+                            <constraint firstItem="VbJ-Va-tZI" firstAttribute="leading" secondItem="PxP-QT-lYb" secondAttribute="leading" constant="30" id="KMm-2W-U7y"/>
+                            <constraint firstItem="VbJ-Va-tZI" firstAttribute="centerX" secondItem="PxP-QT-lYb" secondAttribute="centerX" id="KUn-mZ-LiW"/>
+                            <constraint firstItem="a4u-TE-9ZN" firstAttribute="height" secondItem="wdb-HE-AWc" secondAttribute="height" id="NK2-RR-BUd"/>
+                            <constraint firstItem="PxP-QT-lYb" firstAttribute="trailing" secondItem="VbJ-Va-tZI" secondAttribute="trailing" constant="30" id="Z97-WB-Ufh"/>
+                            <constraint firstItem="a4u-TE-9ZN" firstAttribute="centerX" secondItem="wdb-HE-AWc" secondAttribute="centerX" id="oCM-Zh-o6s"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="PxP-QT-lYb"/>
+                    </view>
+                    <connections>
+                        <outlet property="buySellLabel" destination="hBZ-fr-R9b" id="O7i-1T-vu1"/>
+                        <outlet property="numberOfBitcoinsTextField" destination="ufq-e4-0ww" id="l99-1Z-qxr"/>
+                        <outlet property="pricePerBitcoinTextField" destination="FJp-Sg-L49" id="I45-EJ-XGB"/>
+                        <segue destination="A8C-bj-cUk" kind="unwind" identifier="UnwindSegue" unwindAction="goBackToCalculateVCWithSegue:" id="u1K-1p-KR4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WtR-3t-Pr4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="A8C-bj-cUk" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="3354" y="114"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bitcoinSivi" width="240" height="240"/>
+        <image name="lightGreyBackground" width="1920" height="1080"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="cwQ-Z7-WQ8"/>
+    </inferredMetricsTieBreakers>
+</document>
